@@ -44,7 +44,6 @@ class paytabs {
         },
         headers
       );
-      lof;
       if (response)
         return {
           status: true,

@@ -2,11 +2,12 @@ var axios = require('axios').default;
 
 class switch{
     constructor(){
-        
+
     }
 
-    init=()=>{
+    init = async()=>{
 
     }
 
 }
+module.exports = switch;
