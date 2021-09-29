@@ -4,7 +4,7 @@ class aps {
   // userName = "api_thestation";
   // password = "8WifwVjaV71J432z8B5j";
   // baseUrl =  "https://uat-proxy.aps.iq:5443";
-  constructor(production, userName, password, baseUrl, redirectUrl) {
+  constructor({production, userName, password, baseUrl, redirectUrl}) {
     this.Account = !production
       ? {
           userName: "api_thestation",
