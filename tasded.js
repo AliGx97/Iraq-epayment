@@ -1,7 +1,7 @@
 var axios = require("axios").default;
 var md5 = require("md5").default;
 class tasded {
-  static url = "https://api.tasdid.net/v1/api/";
+   url = "https://api.tasdid.net/v1/api/";
 
   /**
    *
@@ -9,7 +9,7 @@ class tasded {
    * @param {"password"} password
    * @returns token and info
    */
-  static init = async (userName, password) => {
+   init = async (userName, password) => {
     const headers = { "Content-Type": "application/json" };
     let result = await axios.post(
       this.url + "Auth/Token",
@@ -26,7 +26,7 @@ class tasded {
    * @param {"Free text"} note
    * @returns service info you need to save serviceId
    */
-  static addService =async (token, providerId, name, note) => {
+   addService =async (token, providerId, name, note) => {
     const headers = {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
@@ -54,7 +54,7 @@ class tasded {
    * @param {*} note
    * @returns
    */
-  static addService = async (
+   addService = async (
     token,
     payId,
     customerName,
@@ -104,7 +104,7 @@ class tasded {
    * @param {*} note 
    * @returns 
    */
-  static addBill = async(
+   addBill = async(
     payId,
     customerName,
     payDate,
@@ -146,7 +146,7 @@ class tasded {
    * @param {*} body 
    * @returns 
    */
-  static cheakBill = (email, payId, status, body) => {
+   cheakBill = (email, payId, status, body) => {
     let md5Str = `${email}|${payId}|${status}`;
     md5Str = md5(md5Str).toUpperCase();
     return {
