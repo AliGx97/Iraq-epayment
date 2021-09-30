@@ -1,29 +1,26 @@
 var axios = require("axios").default;
 
 class paytabs {
+  baseUrl = "https://secure-iraq.paytabs.com/payment/request";
   constructor({
     Authorization,
     callback,
     returnUrl,
     profile_id,
-    baseUrl = "https://secure-iraq.paytabs.com/payment/request",
+    tran_class,
+    tran_type,
   }) {
     this.Account = {
-      baseUrl,
+      baseUrl: this.baseUrl,
       Authorization,
       callback,
       returnUrl,
       profile_id,
+      tran_type,
+      tran_class,
     };
   }
-  createPayment = async ({
-    tran_type,
-    tran_class,
-    cart_id,
-    cart_description,
-    cart_currency,
-    cart_amount,
-  }) => {
+  checkout = async ({ orderId, description, amount }) => {
     try {
       const headers = {
         "Content-Type": "application/json",
@@ -33,12 +30,12 @@ class paytabs {
         this.Account.baseUrl,
         {
           profile_id: this.Account.profile_id,
-          tran_type,
-          tran_class,
-          cart_id,
-          cart_description,
-          cart_currency,
-          cart_amount,
+          tran_type: this.Account.tran_type,
+          tran_class: this.Account.tran_class,
+          cart_id: orderId,
+          cart_description: description,
+          cart_currency: "IQD",
+          cart_amount: amount,
           callback: this.Account.callback,
           return: this.Account.returnUrl,
         },
@@ -53,8 +50,7 @@ class paytabs {
     } catch (error) {
       return {
         status: false,
-        msg: error.response.data.message,
-        code: error.response.data.code, // مو مهم اعتقد ؟؟؟
+        msg: error.response.data,
       };
     }
   };

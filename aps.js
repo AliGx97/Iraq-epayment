@@ -1,22 +1,22 @@
 const axios = require("axios").default;
 
-class aps {
+class Aps {
   // userName = "api_thestation";
   // password = "8WifwVjaV71J432z8B5j";
   // baseUrl =  "https://uat-proxy.aps.iq:5443";
-  constructor({production, userName, password, baseUrl, redirectUrl}) {
+  constructor({ production, userName, password, redirectUrl }) {
     this.Account = !production
       ? {
-          userName: "api_thestation",
-          password: "8WifwVjaV71J432z8B5j",
+          userName,
+          password,
           baseUrl: "https://uat-proxy.aps.iq:5443",
-          redirectUrl: "http://localhost:3000/",
+          redirectUrl: redirectUrl,
         }
       : {
           userName,
           password,
-          baseUrl,
-          redirectUrl,
+          baseUrl: "https://ecommerce.aps.iq:4443",
+          redirectUrl: redirectUrl,
         };
   }
   /**
@@ -26,13 +26,13 @@ class aps {
    * @param {string} amount
    * @param {string} orderNumber
    */
-  init = async ({ amount, orderNumber }) => {
+  checkout = async ({ amount, orderId }) => {
     const requestOptions = {
       params: {
         userName: this.Account.userName,
         password: this.Account.password,
         amount,
-        orderNumber,
+        orderNumber: orderId,
         returnUrl: this.Account.redirectUrl,
         currency: 368,
       },
@@ -47,9 +47,9 @@ class aps {
         ? {
             status: true,
             url: response.data.formUrl,
-            processId: response.data.orderId,
+            transactionId: response.data.orderId,
           }
-        : { status: false, msg: response.data.errorMessage };
+        : { status: false, msg: response.data };
     } catch (e) {
       return e;
     }
@@ -75,7 +75,13 @@ class aps {
     );
     return response.data.orderStatus == 2
       ? { status: true, msg: "DEPOSITED" }
-      : { status: false, msg: "Error not Vaild" };
+      : {
+          status: false,
+          error: {
+            message: response.data.errorMessage,
+            code: response.data.errorCode,
+          },
+        };
   };
 }
-module.exports = aps;
+module.exports = Aps;

@@ -1,4 +1,4 @@
-var axios = require("axios").default;
+const axios = require("axios").default;
 const jwt = require("jsonwebtoken");
 class zaincash {
   constructor({
@@ -9,41 +9,38 @@ class zaincash {
     lang,
     exp,
     redirectUrl,
+
+    serviceType,
   }) {
-    this.Account = !production
-      ? {
-          initUrl: "https://test.zaincash.iq/transaction/init",
-          requestUrl: "https://test.zaincash.iq/transaction/pay?id=",
-          msisdn,
-          secret,
-          merchantId,
-          lang,
-          exp,
-          redirectUrl,
-          time: Date.now(),
-        }
-      : {
-          initUrl: "https://api.zaincash.iq/transaction/init",
-          requestUrl: "https://api.zaincash.iq/transaction/pay?id=",
-          msisdn,
-          secret,
-          merchantId,
-          lang,
-          exp,
-          redirectUrl,
-          time: Date.now(),
-        };
+    this.Account = {
+      msisdn,
+      secret,
+      merchantId,
+      lang,
+      exp,
+      redirectUrl,
+      time: Date.now(),
+      serviceType,
+    };
+
+    if (production) {
+      this.Account.initUrl = "https://api.zaincash.iq/transaction/init";
+      this.Account.requestUrl = "https://api.zaincash.iq/transaction/pay?id=";
+    } else {
+      this.Account.initUrl = "https://test.zaincash.iq/transaction/init";
+      this.Account.requestUrl = "https://test.zaincash.iq/transaction/pay?id=";
+    }
   }
-  createTrans = async (serviceType, exp, { amount, orderId }) => {
+  checkout = async ({ amount, orderId }) => {
     //  Building the transaction data to be encoded in a JWT token
     const data = {
+      serviceType: this.Account.serviceType,
       amount,
-      serviceType,
       msisdn: this.Account.msisdn,
       orderId,
       redirectUrl: this.Account.redirectUrl,
       iat: this.Account.time,
-      exp: this.Account.time + 60 * 60 * exp,
+      exp: this.Account.time + 60 * 60 * this.Account.exp,
     };
 
     //  Encoding the datd
@@ -66,7 +63,7 @@ class zaincash {
         transactionId: OperationId,
       };
     }
-    return { status: false, msg: response.data.err.msg };
+    return { status: false, error: { mesage: response.data.err } };
   };
 }
 
