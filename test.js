@@ -1,10 +1,13 @@
+const Payment = require("./index");
+let conf = require("./test.json");
 (async () => {
   let Amwal = new Payment("PayTabs", conf).inject;
   let res = await Amwal.checkout({
     amount: 2548,
-    orderId: "45849",
+    orderId: "456849",
+    description: "asda",
   });
-  // console.log(res);
+  console.log(res);
 })();
 (async () => {
   let Aps2 = new Payment("Aps", conf).inject;
@@ -20,6 +23,13 @@
   let res = await ZainCash.checkout({
     amount: 2548,
     orderId: "45849",
+  });
+  console.log(res);
+})();
+(async () => {
+  let Switch = new Payment("Switch", conf).inject;
+  let res = await Switch.checkout({
+    amount: 2548,
   });
   console.log(res);
 })();

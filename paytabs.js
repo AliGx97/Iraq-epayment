@@ -50,9 +50,9 @@ class PayTabs {
     } catch (error) {
       return {
         status: false,
-        msg: error.response.data,
+        error: error.response.data,
       };
     }
   };
 }
-module.exports = paytabs;
+module.exports = PayTabs;

@@ -1,6 +1,7 @@
 const Aps = require("./aps");
 const zaincash = require("./zaincash");
 const amwal = require("./paytabs");
+const Switch = require("./switch");
 
 userName = "api_thestation";
 password = "8WifwVjaV71J432z8B5j";
@@ -22,37 +23,16 @@ class Payment {
       case "ZainCash":
         this.inject = new zaincash(conf[method]);
         break;
-      case "Amwal":
+      case "PayTabs":
         this.inject = new amwal(conf[method]);
+        break;
+      case "Switch":
+        this.inject = new Switch(conf[method]);
         break;
       default:
         this.inject = null;
     }
   }
 }
-
-// class Payment {
-//   methods = ["aps"];
-//   userName = "api_thestation";
-//   password = "8WifwVjaV71J432z8B5j";
-//   constructor(obj) {
-//     this.methods.forEach((e) => {
-//       if (e in obj) {
-//         this.class[e](obj[e].cred);
-//       }
-//     });
-//   }
-
-//
-
-// let check = new Payment("Amwal", { Amwal: cred }).inject;
-
-// (async () => {
-//   let res = await check.checkout({
-//     amount: 2548,
-//     orderId: "45849",
-//   });
-//   console.log(res);
-// })();
 
 module.exports = Payment;

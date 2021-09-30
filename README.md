@@ -51,6 +51,17 @@ npm i iraq-epayment
         "userName":"YOUR USERNAME",
         "password":"YOUR PASSWORD",
         "redirectUrl":"URL" //Your route that they will send GET request to it.
+    },
+    "Switch":{
+        "Switch":{
+        "production": false,
+        "Authorization":
+        "Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA==",
+        "entityId": "8a8294174d0595bb014d05d82e5b01d2",
+        "bankBic": "TESTDETT421",
+        "bankIban": "DE14940593100000012346",
+        "bankCountry": "DE",
+        "redirectUrl": "https://google.com"
     }
 
 }
@@ -82,5 +93,16 @@ console.log(result); //{status:bool, https://api.zaincash.iq/transaction/pay?id=
 result will be an object and if the operation wass successful, the status will be true, else if there were any errors, it will return the object as follows:
 
 ```javascript
+{
+    status:false,
+    error:{
+        //Depend on payment method
+    }
+}
+```
 
+### <span style='color:red'>For better usage, require the `json` file everytime when passing it to the class, in this case, you can update the information without restarting the server, like below: </span>
+
+```javascript
+const payment_process = new Payment("ZainCash", require("PATH_TO_JSON")).inject;
 ```

@@ -97,7 +97,7 @@ class Tasdid {
     md5Str = md5(md5Str).toUpperCase();
     return {
       sucsses: body.key == md5Str && body.status == 3 ? true : false,
-      msg: " ",
+      error: " ",
     };
   };
 }
