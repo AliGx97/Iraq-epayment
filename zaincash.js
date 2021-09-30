@@ -64,6 +64,20 @@ class ZainCash {
     }
     return { status: false, error: { mesage: response.data.err } };
   };
+  verifyToken = (token) => {
+    if (token) {
+      try {
+        var decoded = jwt.verify(token, this.Account.secret);
+      } catch (err) {
+        return { status: false, error: err };
+      }
+      if (decoded.status == "success") {
+        return { status: true, decoded };
+      } else {
+        return { status: false, error: decoded };
+      }
+    }
+  };
 }
 
 module.exports = ZainCash;
