@@ -1,6 +1,6 @@
 var axios = require("axios").default;
 
-class paytabs {
+class PayTabs {
   baseUrl = "https://secure-iraq.paytabs.com/payment/request";
   constructor({
     Authorization,

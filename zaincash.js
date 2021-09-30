@@ -1,6 +1,6 @@
 const axios = require("axios").default;
 const jwt = require("jsonwebtoken");
-class zaincash {
+class ZainCash {
   constructor({
     production,
     msisdn,
@@ -9,7 +9,6 @@ class zaincash {
     lang,
     exp,
     redirectUrl,
-
     serviceType,
   }) {
     this.Account = {
@@ -43,7 +42,7 @@ class zaincash {
       exp: this.Account.time + 60 * 60 * this.Account.exp,
     };
 
-    //  Encoding the datd
+    //  Encoding the data
     const token = jwt.sign(data, this.Account.secret);
 
     //  Preparing the payment data to be sent to ZC api
@@ -67,4 +66,4 @@ class zaincash {
   };
 }
 
-module.exports = zaincash;
+module.exports = ZainCash;
