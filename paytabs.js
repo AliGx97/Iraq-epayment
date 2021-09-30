@@ -42,7 +42,7 @@ class paytabs {
           callback: this.Account.callback,
           return: this.Account.returnUrl,
         },
-        {headers}
+        { headers }
       );
       if (response)
         return {
