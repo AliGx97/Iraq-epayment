@@ -45,12 +45,14 @@ class Payment {
 
 //
 
-let check = new Payment("Amwal", { Amwal: cred }).inject;
+// let check = new Payment("Amwal", { Amwal: cred }).inject;
 
-(async () => {
-  let res = await check.checkout({
-    amount: 2548,
-    orderId: "45849",
-  });
-  console.log(res);
-})();
+// (async () => {
+//   let res = await check.checkout({
+//     amount: 2548,
+//     orderId: "45849",
+//   });
+//   console.log(res);
+// })();
+
+module.exports = Payment;

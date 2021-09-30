@@ -14,6 +14,12 @@ This package will make the integration of online payment in iraq much easier tha
 
 To integrate any payment method (from the ones that are already supported) , all you have to do is the following:
 
+## Installation
+
+```shell
+npm i iraq-epayment
+```
+
 1 - Create a `.json` file that has the account information needed for each payment gateway (merchants information) so the json files will look as follows :
 
 ```javascript
@@ -57,3 +63,24 @@ To integrate any payment method (from the ones that are already supported) , all
 ### <span style='color:skyblue'>NOTE: You only need to put the payments information that you need and support in your application.</span>
 
 <br/>
+
+2 - Require the package as:
+
+```javascript
+const Payment = require("iraq-epayment");
+const accountInfos = require("YOUR JSON PATH");
+```
+
+3 - In your payment controller, you use (zaincash here as an example):
+
+```javascript
+const payment_process = new Payment("ZainCash", accountInfos).inject;
+const result = payment_process.checkout({ amount: 2548, orderId: "45849" });
+console.log(result); //{status:bool, https://api.zaincash.iq/transaction/pay?id=xxxx,transactionId:'xxx',}
+```
+
+result will be an object and if the operation wass successful, the status will be true, else if there were any errors, it will return the object as follows:
+
+```javascript
+
+```

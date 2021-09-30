@@ -1,0 +1,31 @@
+{
+    "ZainCash":{
+        "production":false,
+        "msisdn":"9647835077893",
+        "secret":"$2y$10$hBbAZo2GfSSvyqAyV2SaqOfYewgYpfR1O19gIh4SqyGWdmySZYPuS",
+        "merchantId":"5ffacf6612b5777c6d44266f",
+        "lang":"en",
+        "exp":1,
+        "redirectUrl":"https://thestation.com/",
+        "serviceType":"ZainCash"
+        },
+    "PayTabs":{
+        "Authorization": "SGJNZGZL9R-J2H6DJZRBM-WTKBLM96RH",
+        "profile_id": "79870",
+        "tran_type": "sale",
+        "tran_class": "ecom",
+        "callback": "https://yourdomain.com/ll",
+        "return": "https://yourdomain.com/yourpage"
+    },
+    "Tasdid":{
+        "userName":"YOUR USERNAME",
+        "password":"YOUR PASSWORD"
+    },
+    "Aps":{
+        "production": false,
+        "userName": "api_thestation",
+        "password": "8WifwVjaV71J432z8B5j",
+        "redirectUrl": "https://thestation.com/"
+    }
+
+}

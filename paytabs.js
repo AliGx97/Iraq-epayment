@@ -44,7 +44,7 @@ class PayTabs {
       if (response)
         return {
           status: true,
-          processId: response.data.tran_ref,
+          transactionId: response.data.tran_ref,
           url: response.data.redirect_url,
         };
     } catch (error) {
