@@ -26,8 +26,8 @@ class paytabs {
   }) => {
     try {
       const headers = {
-        Authorization: this.Account.Authorization, //FROM DEV
         "Content-Type": "application/json",
+        Authorization: this.Account.Authorization, //FROM DEV
       };
       const response = await axios.post(
         this.Account.baseUrl,
@@ -42,13 +42,13 @@ class paytabs {
           callback: this.Account.callback,
           return: this.Account.returnUrl,
         },
-        headers
+        {headers}
       );
       if (response)
         return {
           status: true,
-          processId: response.tran_ref,
-          url: response.redirect_url,
+          processId: response.data.tran_ref,
+          url: response.data.redirect_url,
         };
     } catch (error) {
       return {
