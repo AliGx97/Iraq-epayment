@@ -1,7 +1,24 @@
 {
   "name": "iraq-epayment",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "To be written",
+  "homepage":"https://github.com/AliGx97/Iraq-epayment#readme",
+  "bugs":{
+    "url": "https://github.com/AliGx97/Iraq-epayment/issues",
+    "email": "dvlpr97@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Ali Hasan",
+      "email": "dvlpr97@gmail.com"
+    },
+    {
+      "name": "Mohammed Fakhri"
+    },
+    {
+      "name": "Abdulrahman Abdullah"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
