@@ -2,8 +2,8 @@
   "name": "iraq-epayment",
   "version": "1.0.4",
   "description": "To be written",
-  "homepage":"https://github.com/AliGx97/Iraq-epayment#readme",
-  "bugs":{
+  "homepage": "https://github.com/AliGx97/Iraq-epayment#readme",
+  "bugs": {
     "url": "https://github.com/AliGx97/Iraq-epayment/issues",
     "email": "dvlpr97@gmail.com"
   },
@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.21.4",
     "jsonwebtoken": "^8.5.1",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "soap": "^0.42.0"
   }
 }

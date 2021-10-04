@@ -29,14 +29,31 @@
     },
     "Switch":{
         "production": false,
-  "Authorization":
-    "Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA==",
-  "entityId": "8a8294174d0595bb014d05d82e5b01d2",
-  "bankBic": "TESTDETT421",
-  "bankIban": "DE14940593100000012346",
-  "bankCountry": "DE",
-  "redirectUrl": "https://google.com"
+        "Authorization":
+        "Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA==",
+        "entityId": "8a8294174d0595bb014d05d82e5b01d2",
+        "bankBic": "TESTDETT421",
+        "bankIban": "DE14940593100000012346",
+        "bankCountry": "DE",
+        "redirectUrl": "https://google.com"
 
+    },
+    "AsiaHawala":{
+        "TYPE": "RMPREQ",
+        "MSISDN": "XXX", 
+        "PROVIDER": "101",
+        "MPIN": "XXX", 
+        "LANGUAGE1": "1",
+        "LANGUAGE2": "1",
+        "PAYID": "12",
+        "PROVIDER2": "101",
+        "PAYID2": "12",
+        "USERNAME": "XXX",
+        "PASSWORD": "XXX", 
+        "TYPE2":"FTXNENQ",
+        "SYSTEM": "MERCHANT", 
+        "USERTYPE": "PAYEE",
+        "MERCHANTCODE": "XXX"
     }
 
 }
